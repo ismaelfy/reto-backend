@@ -1,9 +1,9 @@
 const ServicioUsuario = require('../../dominio/servicios/servicioUsuario');
-const { respuestaError, respuestaExitosa } = require('../../infraestructura/utilidades/respuestas');
+const { respuestaError } = require('../../infraestructura/utilidades/respuestas');
 const validador = require('../../infraestructura/utilidades/validador');
 
 const reglasUsuario = {
-    id: 'required|string'
+    id: 'required|string|notEmpty'
 };
 
 async function eliminarUsuario(event) {

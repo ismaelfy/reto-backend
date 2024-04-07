@@ -17,7 +17,6 @@ async function obtenerUsuario(event) {
         const servicioUsuario = new ServicioUsuario();
         return await servicioUsuario.obtenerUsuario(id);        
     } catch (error) {
-        console.error(`Error al obtener usuario:`, error);
         return respuestaError(500, 'Error al obtener usuario');
     }
 }

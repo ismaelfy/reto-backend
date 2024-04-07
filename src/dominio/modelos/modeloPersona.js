@@ -1,3 +1,4 @@
+// src/dominio/modelos/modeloPersona.js
 class Persona {
     constructor(nombre, altura, peso, colorCabello, colorPiel, colorOjos, anioNacimiento, genero) {
         this.nombre = nombre;

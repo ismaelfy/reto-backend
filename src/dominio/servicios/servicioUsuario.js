@@ -1,5 +1,6 @@
+// src/dominio/servicios/servicioUsuario.js
 const repositorioUsuario = require('../repositorios/repositorioUsuario');
-const { respuestaError, respuestaExitosa } = require('../../infraestructura/utilidades/respuestas');
+const { respuestaError } = require('../../infraestructura/utilidades/respuestas');
 
 class ServicioUsuario {
     async crearUsuario(usuarioData) {

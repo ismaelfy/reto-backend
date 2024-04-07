@@ -38,8 +38,13 @@ function respuestaError(statusCode, mensaje) {
     };
 }
 
+function parsearRespuesta(resultado) {
+    return JSON.parse(resultado.body);
+}
+
 module.exports = {
     respuestaExitosa,
     respuestaError,
+    parsearRespuesta,
     enviarRespuesta
 };

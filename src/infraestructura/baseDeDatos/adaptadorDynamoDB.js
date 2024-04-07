@@ -1,3 +1,4 @@
+// src/infraestructura/baseDeDatos/adaptadorDynamoDB.js
 const AWS = require('aws-sdk');
 class AdaptadorDynamoDB {
     constructor() {

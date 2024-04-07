@@ -1,81 +1,47 @@
+# Proyecto Serverless para Gestión de Usuarios y Personas
 
-# Serverless Framework Node HTTP API on AWS
+Este proyecto Serverless proporciona una API para gestionar usuarios y personas utilizando AWS Lambda, AWS API Gateway y DynamoDB.
 
-This template demonstrates how to make a simple HTTP API with Node.js running on AWS Lambda and API Gateway using the Serverless Framework.
+## Pasos para Empezar
 
-This template does not include any kind of persistence (database). For more advanced examples, check out the [serverless/examples repository](https://github.com/serverless/examples/) which includes Typescript, Mongo, DynamoDB and other examples.
+Sigue estos pasos para configurar y desplegar el proyecto en tu entorno local y en AWS.
 
-## Usage
+### Requisitos Previos
 
-### Deployment
+- Node.js y npm instalados en tu sistema
+- Cuenta de AWS con acceso a AWS Lambda, AWS API Gateway y DynamoDB
+- Serverless Framework instalado globalmente (`npm install -g serverless`)
 
-```
-$ serverless deploy
-```
+### Configuración
 
-After deploying, you should see output similar to:
+1. Clona este repositorio en tu máquina local.
+2. Instala las dependencias del proyecto ejecutando `npm install`.
 
-```bash
-Deploying aws-node-http-api-project to stage dev (us-east-1)
+### Despliegue Local
 
-✔ Service deployed to stack aws-node-http-api-project-dev (152s)
+1. Ejecuta el comando `serverless offline start` para iniciar el proyecto en tu entorno local.
+2. Accede a `http://localhost:3000` en tu navegador para probar la API localmente.
 
-endpoint: GET - https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/
-functions:
-  hello: aws-node-http-api-project-dev-hello (1.9 kB)
-```
+### Despliegue en AWS
 
-_Note_: In current form, after deployment, your API is public and can be invoked by anyone. For production deployments, you might want to configure an authorizer. For details on how to do that, refer to [http event docs](https://www.serverless.com/framework/docs/providers/aws/events/apigateway/).
+1. Configura tus credenciales de AWS ejecutando `aws configure` y sigue las instrucciones.
+2. Ejecuta el comando `serverless deploy` para desplegar el proyecto en tu cuenta de AWS.
 
-### Invocation
+### Acceso a la Documentación
 
-After successful deployment, you can call the created application via HTTP:
+Una vez que hayas desplegado el proyecto en AWS, puedes acceder a la documentación de la API generada automáticamente visitando la URL proporcionada por AWS API Gateway.
 
-```bash
-curl https://xxxxxxx.execute-api.us-east-1.amazonaws.com/
-```
+## Estructura del Proyecto
 
-Which should result in response similar to the following (removed `input` content for brevity):
+- `src/`: Contiene el código fuente del proyecto.
+- `tests/`: Contiene las pruebas unitarias para las funciones.
+- `serverless.yml`: Archivo de configuración de Serverless Framework.
+- `README.md`: Este archivo que estás leyendo.
 
-```json
-{
-  "message": "Go Serverless v2.0! Your function executed successfully!",
-  "input": {
-    ...
-  }
-}
-```
+## Contribuciones
 
-### Local development
+¡Las contribuciones son bienvenidas! Si encuentras algún error o tienes alguna sugerencia de mejora, no dudes en abrir un issue o enviar un pull request.
 
-You can invoke your function locally by using the following command:
+## Licencia
 
-```bash
-serverless invoke local --function hello
-```
-
-Which should result in response similar to the following:
-
-```
-{
-  "statusCode": 200,
-  "body": "{\n  \"message\": \"Go Serverless v3.0! Your function executed successfully!\",\n  \"input\": \"\"\n}"
-}
-```
-
-
-Alternatively, it is also possible to emulate API Gateway and Lambda locally by using `serverless-offline` plugin. In order to do that, execute the following command:
-
-```bash
-serverless plugin install -n serverless-offline
-```
-
-It will add the `serverless-offline` plugin to `devDependencies` in `package.json` file as well as will add it to `plugins` in `serverless.yml`.
-
-After installation, you can start local emulation with:
-
-```
-serverless offline
-```
-
-To learn more about the capabilities of `serverless-offline`, please refer to its [GitHub repository](https://github.com/dherault/serverless-offline).
+Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo `LICENSE` para obtener más detalles.

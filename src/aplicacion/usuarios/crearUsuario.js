@@ -3,10 +3,10 @@ const { respuestaError } = require('../../infraestructura/utilidades/respuestas'
 const validador = require('../../infraestructura/utilidades/validador');
 
 const reglasUsuario = {
-    nombre: 'required|string',
-    apellidos: 'required|string',
-    correo: 'required|email',
-    telefono: 'required|string',
+    nombre: 'required|string|notEmpty',
+    apellidos: 'required|string|notEmpty',
+    correo: 'required|email|notEmpty',
+    telefono: 'required|string|notEmpty',
 };
 
 async function crearUsuario(event) {
@@ -20,7 +20,6 @@ async function crearUsuario(event) {
         const resultado = await servicioUsuario.crearUsuario(usuarioData);
         return resultado;
     } catch (error) {
-        console.error('Error al crear usuario:', error);
         return respuestaError(500, 'Error al crear usuario');
     }
 }

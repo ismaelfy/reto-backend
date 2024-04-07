@@ -1,3 +1,4 @@
+// src/aplicacion/personas/obtenerPersona.js
 const ServicioPersona = require("../../dominio/servicios/servicioPersona");
 const validador = require('../../infraestructura/utilidades/validador');
 const { respuestaError, respuestaExitosa } = require('../../infraestructura/utilidades/respuestas');
@@ -17,8 +18,7 @@ async function obtenerPersona(event) {
         const { id } = event.pathParameters;
         const servicioPersona = new ServicioPersona();
 
-        const persona = await servicioPersona.obtenerPersona(id);
-        return respuestaExitosa(persona);
+        return await servicioPersona.obtenerPersona(id);
     } catch (error) {
         return respuestaError(500, 'Error al obtener persona');
     }

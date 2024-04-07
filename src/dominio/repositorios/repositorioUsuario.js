@@ -1,3 +1,4 @@
+// src/dominio/repositorios/repositorioUsuario.js
 const AdaptadorDynamoDB = require('../../infraestructura/baseDeDatos/adaptadorDynamoDB');
 const Usuario = require('../modelos/modeloUsuario');
 const { respuestaError, respuestaExitosa } = require('../../infraestructura/utilidades/respuestas');
@@ -23,7 +24,6 @@ const crearUsuario = async (usuarioData) => {
         }
         return respuestaExitosa(usuario);
     } catch (error) {
-        console.error('Error al crear usuario en DynamoDB:', error);
         return respuestaError(500, 'Error al crear usuario en DynamoDB');
     }
 }
@@ -44,7 +44,6 @@ async function obtenerUsuarioPorId(id) {
 
         return respuestaExitosa(new Usuario(data.Items));
     } catch (error) {
-        console.error('Error al obtener usuario por ID en DynamoDB:', error);
         return respuestaError(500, 'Error al obtener usuario por ID en DynamoDB');
     }
 }
@@ -63,7 +62,6 @@ async function listarUsuarios() {
         const usuarios = data.Items.map(item => new Usuario(item));
         return respuestaExitosa(usuarios);
     } catch (error) {
-        console.error('Error al listar usuarios en DynamoDB:', error);
         return respuestaError(500, 'Error al listar usuarios en DynamoDB');
     }
 }
@@ -85,7 +83,6 @@ async function actualizarUsuario(id, usuarioData) {
         }
         return respuestaExitosa(usuario);
     } catch (error) {
-        console.error('Error al actualizar usuario en DynamoDB:', error);
         return respuestaError(500, 'Error al actualizar usuario en DynamoDB');
     }
 }

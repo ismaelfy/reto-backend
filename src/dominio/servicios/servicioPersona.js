@@ -1,6 +1,6 @@
-
+// src/dominio/servicios/servicioPersona.js
 const RepositorioPersona = require('../repositorios/repositorioPersona');
-const { respuestaError, respuestaExitosa } = require('../../infraestructura/utilidades/respuestas');
+const { respuestaError } = require('../../infraestructura/utilidades/respuestas');
 
 class ServicioPersona {
     async listarPersonas() {
