@@ -1,0 +1,83 @@
+org: ismaelfy
+app: reto-backend-api
+service: reto-backend-api
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  stage: dev
+  # profile: test
+  httpApi:
+    cors: true
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:*
+          Resource: 
+          - arn:aws:dynamodb:us-east-1:767398021254:table/tablaUsuarios
+
+functions:
+  crearUsuario:
+    handler: src/aplicacion/usuarios/crearUsuario.crearUsuario
+    events:
+      - httpApi:
+          path: /usuarios
+          method: post
+  obtenerUsuario:
+    handler: src/aplicacion/usuarios/obtenerUsuario.obtenerUsuario
+    events:
+      - httpApi:
+          path: /usuarios/{id}
+          method: get
+  listarUsuarios:
+    handler: src/aplicacion/usuarios/listarUsuarios.listarUsuarios
+    events:
+      - httpApi:
+          path: /usuarios
+          method: get
+  actualizarUsuario:
+    handler: src/aplicacion/usuarios/actualizarUsuario.actualizarUsuario
+    events:
+      - httpApi:
+          path: /usuarios/{id}
+          method: put
+  eliminarUsuario:
+    handler: src/aplicacion/usuarios/eliminarUsuario.eliminarUsuario
+    events:
+      - httpApi:
+          path: /usuarios/{id}
+          method: delete
+
+  listarPersonas:
+    handler: src/aplicacion/personas/listarPersonas.listarPersonas
+    events:
+      - httpApi:
+          path: /personas
+          method: get
+  obtenerPersona:
+    handler: src/aplicacion/personas/obtenerPersona.obtenerPersona
+    events:
+      - httpApi:
+          path: /personas/{id}
+          method: get
+
+resources:
+  Resources:
+    tablaUsuarios:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: tablaUsuarios
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+
+plugins:
+  - serverless-offline
